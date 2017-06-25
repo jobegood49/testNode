@@ -14,7 +14,14 @@ function getMovie(req, res) {
 
 }
 
+
+function getAllMovies(req, res) {
+    res.status(200).send(data);
+
+}
+
 module.exports = {
-    getMovie : getMovie
+    getMovie : getMovie,
+    getAllMovies : getAllMovies
 }
 

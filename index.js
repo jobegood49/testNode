@@ -44,14 +44,12 @@ app.use(bodyParser.json())
 
 */
 
-app.get('/movies', (req, res) => {
-    res.status(200).send(data);
-
-});
+app.get('/movies', (req, res) => movie.getAllMovies(req, res));
+app.get('/movies/:id', (req, res) =>movie.getMovie(req, res));
 
 //app.get('/movies/:id', getSingleMovie);
 
-app.get('/movies/:id', (req, res) =>movie.getMovie(req, res));
+
 //app.get('/movies/:id', routes.project.get);
 
 // app.get('/movies/:id', (req, res) => {
