@@ -9,9 +9,6 @@ const config = require('./config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-
-//const a = require('./getSingleMovie.js');
-const getSingleMovie = require('./getSingleMovie.js');
 const movie = require('./actions');
 
 //app.use(bodyParser.urlencoded({extended: false}));
@@ -36,32 +33,7 @@ app.get('/movies/:id', (req, res) =>movie.getMovie(req, res));
 app.delete('/movies/:id', (req, res) => movie.deleteMovie(req, res));
 app.post('/movies', (req, res) => movie.createMovie(req, res));
 app.patch('/movies/:id', (req, res) => movie.updateMovie(req, res));
-
-
-
-app.put('/movies/:id', (req, res) => {
-    let id = req.params.id;
-    for (var i=0; i < data.length; i++) {
-        if (data[i].id == id) {
-            if (req.body.title && req.body.category && req.body.releaseYear && req.body.poster && req.body.directors && req.body.actors && req.body.synopsis && req.body.rate && req.body.lastViewDate && req.body.price) {
-                data[i].title = req.body.title;
-                data[i].category = req.body.category;
-                data[i].releaseYear = req.body.releaseYear;
-                data[i].poster = req.body.poster;
-                data[i].directors = req.body.directors;
-                data[i].actors = req.body.actors;
-                data[i].synopsis = req.body.synopsis;
-                data[i].rate = req.body.rate;
-                data[i].lastViewDate = req.body.lastViewDate;
-                data[i].price = req.body.price;
-                res.status(200).send('movie updated');
-            }
-            else {
-                res.status(400).send('all fields need to be filled');
-            }
-        }
-    }
-});
+app.put('/movies/:id', (req, res) => movie.replaceMovie(req, res));
 
 
 app.listen(3000);

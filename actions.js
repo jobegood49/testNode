@@ -78,8 +78,31 @@ function updateMovie(req, res) {
 
     }
 
-
 }
+
+function replaceMovie(req, res) {
+    let id = req.params.id;
+    let arr = Object.keys(req.body);
+    console.log(req.body);
+    console.log(arr);
+    for (var i=0; i < data.length; i++) {
+        if (data[i].id == id) {
+            if (helper.sameKeys(arr, config.movieKeys)) {
+                console.log(Object.keys(data[i]));
+                Object.keys(data[i]).map(function(el) {
+                    data[i][el] = req.body[el];
+
+                });
+                data[i].id = id;
+
+                res.status(200).send('movie updated');
+            }
+            else {
+                res.status(400).send('all fields need to be filled');
+            }
+        }
+    }
+};
 
 
 module.exports = {
@@ -87,7 +110,8 @@ module.exports = {
     getAllMovies : getAllMovies,
     deleteMovie : deleteMovie,
     createMovie : createMovie,
-    updateMovie : updateMovie
+    updateMovie : updateMovie,
+    replaceMovie : replaceMovie
 
 }
 
