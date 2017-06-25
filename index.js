@@ -46,6 +46,7 @@ app.use(bodyParser.json())
 
 app.get('/movies', (req, res) => movie.getAllMovies(req, res));
 app.get('/movies/:id', (req, res) =>movie.getMovie(req, res));
+app.delete('/movies/:id', (req, res) => movie.deleteMovie(req, res));
 
 //app.get('/movies/:id', getSingleMovie);
 
@@ -62,7 +63,7 @@ app.get('/movies/:id', (req, res) =>movie.getMovie(req, res));
 //
 // })
 
-app.delete('/movies/:id', (req, res) => {
+/*app.delete('/movies/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);
     let movieSelected = data.filter(function (o) {
@@ -84,6 +85,7 @@ app.delete('/movies/:id', (req, res) => {
     }
 
 })
+*/
 
 
 /*
