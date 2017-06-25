@@ -35,7 +35,7 @@ containsAll(arr1, arr2) && containsAll(arr2, arr1);
 
 let res = sameKeys(arr1, arr2);
 
-console.log(res);
+//console.log(res);
 
 module.exports = {
     sameKeys : sameKeys

@@ -131,6 +131,7 @@ app.post('/movies', (req, res) => {
     let arr = Object.keys(req.body);
     //let movie = new Movie(id,req.body.title, req.body.category, req.body.releaseYear, req.body.poster, req.body.directors, req.body.actors, req.body.synopsis, req.body.rate, req.body.lastViewDate, req.body.price);
     if (helper.sameKeys(arr, config.movieKeys)) {
+        req.body.id = id;
         data.push(req.body);
         res.status(200).send('movie posted');
     } else {
