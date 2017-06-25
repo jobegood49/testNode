@@ -56,11 +56,38 @@ function createMovie(req, res) {
 }
 
 
+function updateMovie(req, res) {
+
+    let id = req.params.id;
+
+    let movieSelected = data.filter(function (o) {
+        return o.id == id;
+    });
+
+    if ( movieSelected.length > 0) {
+        for(let key in req.body) {
+
+            if ( movieSelected[0].hasOwnProperty(key) ) {
+                movieSelected[0][key] = req.body[key];
+            }
+        }
+        res.status(200).send("Updated the movie");
+
+    } else {
+        res.status(400).send("Unable to update");
+
+    }
+
+
+}
+
+
 module.exports = {
     getMovie : getMovie,
     getAllMovies : getAllMovies,
     deleteMovie : deleteMovie,
-    createMovie : createMovie
+    createMovie : createMovie,
+    updateMovie : updateMovie
 
 }
 
