@@ -1,3 +1,4 @@
+/*
 const data = require('./data').movies;
 
 const Movie = require('./movie');
@@ -31,18 +32,18 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 /*app.get('/', function(req, res){
-    console.log(req.get('toto'));
-    console.log(req.body);
+ console.log(req.get('toto'));
+ console.log(req.body);
 
-    let verif = req.get('toto');
-    if ( parseInt(verif)  === 42 ) {
-        res.status(200).send('hello world' + verif);
-    } else {
-        res.status(401).send('degage');
-    }
-});
+ let verif = req.get('toto');
+ if ( parseInt(verif)  === 42 ) {
+ res.status(200).send('hello world' + verif);
+ } else {
+ res.status(401).send('degage');
+ }
+ });
 
-*/
+
 
 app.get('/movies', (req, res) => movie.getAllMovies(req, res));
 app.get('/movies/:id', (req, res) =>movie.getMovie(req, res));
@@ -65,89 +66,89 @@ app.post('/movies', (req, res) => movie.createMovie(req, res));
 //
 // })
 
-/*app.delete('/movies/:id', (req, res) => {
-    const id = req.params.id;
-    console.log(id);
-    let movieSelected = data.filter(function (o) {
-        return o.id == id;
-    });
+app.delete('/movies/:id', (req, res) => {
+ const id = req.params.id;
+ console.log(id);
+ let movieSelected = data.filter(function (o) {
+ return o.id == id;
+ });
 
-    console.log(movieSelected);
-    console.log(movieSelected === []);
+ console.log(movieSelected);
+ console.log(movieSelected === []);
 
-    if (movieSelected.length > 0) {
-        for (let i = 0; i < data.length; i++) {
+ if (movieSelected.length > 0) {
+ for (let i = 0; i < data.length; i++) {
 
-            if (data[i].id == id)
-                data.splice(i, 1);
-        }
-        res.status(200).send('deleted');
-    } else {
-        res.status(400).send('cant');
-    }
+ if (data[i].id == id)
+ data.splice(i, 1);
+ }
+ res.status(200).send('deleted');
+ } else {
+ res.status(400).send('cant');
+ }
 
-})
-*/
+ })
+ */
 
 
 /*
-app.post('/movies', function (req, res) {
+ app.post('/movies', function (req, res) {
 
 
-    //console.log(Object.keys(data).length);
-    console.log("coucou");
-    //console.log(req.body.title);
-    //console.log(movie);
+ //console.log(Object.keys(data).length);
+ console.log("coucou");
+ //console.log(req.body.title);
+ //console.log(movie);
 
-    /*if (req.body instanceof Movie) {
-        console.log(true);
-    } else {
-        console.log(false);
-    }
+ /*if (req.body instanceof Movie) {
+ console.log(true);
+ } else {
+ console.log(false);
+ }
 
-    //data.push(req.body);
-    //let movie = new Movie("Avatar", "sciencesfiction",  "2010", "server/img/avatar.jpg", "James Cameron", "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang, Michelle Rodriguez", "Sur la lointaine planète de Pandora, Jake Sully, un hÃ©ros malgré lui, se lance dans une quête de rédemption, de découverte, d'amour inattendu, dont l'issue sera un combat héroïque pour sauver toute une civilisation.",
-    //    3,"2013-04-01T10:04:50.000Z",25.46);
-    //console.log(movie);
+ //data.push(req.body);
+ //let movie = new Movie("Avatar", "sciencesfiction",  "2010", "server/img/avatar.jpg", "James Cameron", "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang, Michelle Rodriguez", "Sur la lointaine planète de Pandora, Jake Sully, un hÃ©ros malgré lui, se lance dans une quête de rédemption, de découverte, d'amour inattendu, dont l'issue sera un combat héroïque pour sauver toute une civilisation.",
+ //    3,"2013-04-01T10:04:50.000Z",25.46);
+ //console.log(movie);
 
-    let movie1 = new Movie(req.body.title, req.body.category, req.body.releaseYear, req.body.poster, req.body.directors, req.body.actors, req.body.synopsis, req.body.rate, req.body.lastViewDate, req.body.price);
-    data.push(movie1);
+ let movie1 = new Movie(req.body.title, req.body.category, req.body.releaseYear, req.body.poster, req.body.directors, req.body.actors, req.body.synopsis, req.body.rate, req.body.lastViewDate, req.body.price);
+ data.push(movie1);
 
 
-    res.send('POST request to the homepage')
-})
+ res.send('POST request to the homepage')
+ })
 
-*/
+ */
 
 /*app.post('/movies', (req, res) => {
-    let id = Object.keys(data).length + 1;
-    let movie = new Movie(id,req.body.title, req.body.category, req.body.releaseYear, req.body.poster, req.body.directors, req.body.actors, req.body.synopsis, req.body.rate, req.body.lastViewDate, req.body.price);
-    if (req.body.title && req.body.category && req.body.releaseYear && req.body.poster && req.body.directors && req.body.actors && req.body.synopsis && req.body.rate && req.body.lastViewDate && req.body.price) {
-        data.push(movie);
-        res.status(200).send('movie posted');
-    } else {
-        res.status(400).send('not posted');
+ let id = Object.keys(data).length + 1;
+ let movie = new Movie(id,req.body.title, req.body.category, req.body.releaseYear, req.body.poster, req.body.directors, req.body.actors, req.body.synopsis, req.body.rate, req.body.lastViewDate, req.body.price);
+ if (req.body.title && req.body.category && req.body.releaseYear && req.body.poster && req.body.directors && req.body.actors && req.body.synopsis && req.body.rate && req.body.lastViewDate && req.body.price) {
+ data.push(movie);
+ res.status(200).send('movie posted');
+ } else {
+ res.status(400).send('not posted');
 
-    }
+ }
 
-});
-*/
+ });
+ */
 
 /*
-app.post('/movies', (req, res) => {
-    let id = Object.keys(data).length + 1;
-    let arr = Object.keys(req.body);
-    if (helper.sameKeys(arr, config.movieKeys)) {
-        req.body.id = id;
-        data.push(req.body);
-        res.status(200).send('movie posted');
-    } else {
-        res.status(400).send('not posted');
+ app.post('/movies', (req, res) => {
+ let id = Object.keys(data).length + 1;
+ let arr = Object.keys(req.body);
+ if (helper.sameKeys(arr, config.movieKeys)) {
+ req.body.id = id;
+ data.push(req.body);
+ res.status(200).send('movie posted');
+ } else {
+ res.status(400).send('not posted');
 
-    }
-});
+ }
+ });
 
-*/
+
 
 
 app.post('/movies', (req, res) => movie.createMovie(req, res));
@@ -181,12 +182,12 @@ app.patch('/movies/:id', (req, res) => {
     res.status(200).send("ok");
 
 });
-/*
-app.delete('/', function(req, res){
-    res.send('delete');
-});
 
-*/
+ app.delete('/', function(req, res){
+ res.send('delete');
+ });
+
+
 
 
 app.put('/movies/:id', (req, res) => {
@@ -215,4 +216,6 @@ app.put('/movies/:id', (req, res) => {
 
 
 app.listen(3000);
+
+*/
 
