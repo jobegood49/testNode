@@ -2,7 +2,8 @@ const data = require('./data').movies;
 
 const Movie = require('./movie');
 
-const helper = require('./helper');
+const helper = require('./tool');
+const config = require('./config');
 
 
 const express = require('express');
@@ -111,11 +112,26 @@ app.post('/movies', function (req, res) {
 
 */
 
-app.post('/movies', (req, res) => {
+/*app.post('/movies', (req, res) => {
     let id = Object.keys(data).length + 1;
     let movie = new Movie(id,req.body.title, req.body.category, req.body.releaseYear, req.body.poster, req.body.directors, req.body.actors, req.body.synopsis, req.body.rate, req.body.lastViewDate, req.body.price);
     if (req.body.title && req.body.category && req.body.releaseYear && req.body.poster && req.body.directors && req.body.actors && req.body.synopsis && req.body.rate && req.body.lastViewDate && req.body.price) {
         data.push(movie);
+        res.status(200).send('movie posted');
+    } else {
+        res.status(400).send('not posted');
+
+    }
+
+});
+*/
+
+app.post('/movies', (req, res) => {
+    let id = Object.keys(data).length + 1;
+    let arr = Object.keys(req.body);
+    //let movie = new Movie(id,req.body.title, req.body.category, req.body.releaseYear, req.body.poster, req.body.directors, req.body.actors, req.body.synopsis, req.body.rate, req.body.lastViewDate, req.body.price);
+    if (helper.sameKeys(arr, config.movieKeys)) {
+        data.push(req.body);
         res.status(200).send('movie posted');
     } else {
         res.status(400).send('not posted');
