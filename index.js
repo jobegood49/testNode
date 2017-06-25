@@ -131,6 +131,7 @@ app.post('/movies', function (req, res) {
 });
 */
 
+/*
 app.post('/movies', (req, res) => {
     let id = Object.keys(data).length + 1;
     let arr = Object.keys(req.body);
@@ -143,6 +144,11 @@ app.post('/movies', (req, res) => {
 
     }
 });
+
+*/
+
+
+app.post('/movies', (req, res) => movie.createMovie(req, res));
 
 app.patch('/movies/:id', (req, res) => {
 
@@ -173,10 +179,12 @@ app.patch('/movies/:id', (req, res) => {
     res.status(200).send("ok");
 
 });
-
+/*
 app.delete('/', function(req, res){
     res.send('delete');
 });
+
+*/
 
 
 app.put('/movies/:id', (req, res) => {
