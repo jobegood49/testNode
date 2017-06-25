@@ -12,6 +12,7 @@ const app = express();
 
 //const a = require('./getSingleMovie.js');
 const getSingleMovie = require('./getSingleMovie.js');
+const movie = require('./actions');
 
 //app.use(bodyParser.urlencoded({extended: false}));
 //app.use(bodyParser.json());
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.get('/', function(req, res){
+/*app.get('/', function(req, res){
     console.log(req.get('toto'));
     console.log(req.body);
 
@@ -41,12 +42,16 @@ app.get('/', function(req, res){
     }
 });
 
+*/
+
 app.get('/movies', (req, res) => {
     res.status(200).send(data);
 
 });
 
-app.get('/movies/:id', getSingleMovie);
+//app.get('/movies/:id', getSingleMovie);
+
+app.get('/movies/:id', (req, res) =>movie.getMovie(req, res));
 //app.get('/movies/:id', routes.project.get);
 
 // app.get('/movies/:id', (req, res) => {
@@ -129,7 +134,6 @@ app.post('/movies', function (req, res) {
 app.post('/movies', (req, res) => {
     let id = Object.keys(data).length + 1;
     let arr = Object.keys(req.body);
-    //let movie = new Movie(id,req.body.title, req.body.category, req.body.releaseYear, req.body.poster, req.body.directors, req.body.actors, req.body.synopsis, req.body.rate, req.body.lastViewDate, req.body.price);
     if (helper.sameKeys(arr, config.movieKeys)) {
         req.body.id = id;
         data.push(req.body);
@@ -138,7 +142,6 @@ app.post('/movies', (req, res) => {
         res.status(400).send('not posted');
 
     }
-
 });
 
 app.patch('/movies/:id', (req, res) => {
