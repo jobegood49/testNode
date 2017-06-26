@@ -16,7 +16,6 @@ function getMovie(req, res) {
 
 }
 
-
 function getAllMovies(req, res) {
     res.status(200).send(data);
 
@@ -41,7 +40,6 @@ function deleteMovie(req, res) {
 
 }
 
-
 function createMovie(req, res) {
     let id = Object.keys(data).length + 1;
     let arr = Object.keys(req.body);
@@ -54,7 +52,6 @@ function createMovie(req, res) {
 
     }
 }
-
 
 function updateMovie(req, res) {
 
@@ -83,15 +80,11 @@ function updateMovie(req, res) {
 function replaceMovie(req, res) {
     let id = req.params.id;
     let arr = Object.keys(req.body);
-    console.log(req.body);
-    console.log(arr);
     for (var i=0; i < data.length; i++) {
         if (data[i].id == id) {
             if (helper.sameKeys(arr, config.movieKeys)) {
-                console.log(Object.keys(data[i]));
                 Object.keys(data[i]).map(function(el) {
                     data[i][el] = req.body[el];
-
                 });
                 data[i].id = id;
 

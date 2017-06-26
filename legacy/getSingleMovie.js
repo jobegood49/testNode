@@ -1,5 +1,5 @@
 
-const data = require('./data').movies;
+const data = require('../data').movies;
 
 module.exports = function getSingleMovie(req, res) {
 
